@@ -1,15 +1,117 @@
 {% load socialaccount %}
 
 <html>
-  {% include  "head.html" %}
-  
-  <body>
-    {% include  "navbar_template.html" %}
-    <h1>My Google OAuth Project </h1>
-    {% if user.is_authenticated %}
-      <p>Welcome, You are logged in as {{ user.username }}</p>
-    {% else %}
-      <a href="{% provider_login_url 'google' %}">Login With Google</a>
-    {% endif %}
-  </body>
+{% include  "head.html" %}
+<body>
+{% include  "navbar_template.html" %}
+<div class="panel">
+    <div class="text-center">
+        <h1>Diario web</h1>
+    </div>
+</div>
+<section class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <article class="blog-post">
+                <h3>Un excelente título de publicación <small>18/10/2021</small></h3>
+                <img class="img-thumbnail" src="https://via.placeholder.com/850x350">
+                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci.
+                    Etiam at risus et justo dignissim congue. Donec congue lacinia
+                    dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper
+                    orci. Quisque eget odio ac lectus vestibulum faucibus eget in
+                    metus. In pellentesque faucibus vestibulum. Nulla at nulla justo,
+                    eget luctus.</p>
+                <div class="panel">
+                    <ul class="">
+                        <li><a href="#">Autor: José Pérez</a></li>
+                        <li><a href="#">Comentarios: 3</a></li>
+                    </ul>
+                </div>
+            </article>
+            <article class="blog-post">
+                <h3>Un excelente título de publicación <small>18/10/2021</small></h3>
+                <img class="img-thumbnail" src="https://via.placeholder.com/850x350">
+                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci.
+                    Etiam at risus et justo dignissim congue. Donec congue lacinia
+                    dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper
+                    orci. Quisque eget odio ac lectus vestibulum faucibus eget in
+                    metus. In pellentesque faucibus vestibulum. Nulla at nulla justo,
+                    eget luctus.</p>
+                <div class="panel">
+                    <ul class="">
+                        <li><a href="#">Autor: José Pérez</a></li>
+                        <li><a href="#">Comentarios: 3</a></li>
+                    </ul>
+                </div>
+            </article>
+            <article class="blog-post">
+                <h3>Un excelente título de publicación <small>18/10/2021</small></h3>
+                <img class="img-thumbnail" src="https://via.placeholder.com/850x350">
+                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci.
+                    Etiam at risus et justo dignissim congue. Donec congue lacinia
+                    dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper
+                    orci. Quisque eget odio ac lectus vestibulum faucibus eget in
+                    metus. In pellentesque faucibus vestibulum. Nulla at nulla justo,
+                    eget luctus.</p>
+                <div class="panel">
+                    <ul class="">
+                        <li><a href="#">Autor: José Pérez</a></li>
+                        <li><a href="#">Comentarios: 3</a></li>
+                    </ul>
+                </div>
+            </article>
+            <article class="blog-post">
+                <h3>Un excelente título de publicación <small>18/10/2021</small></h3>
+                <img class="img-thumbnail" src="https://via.placeholder.com/850x350">
+                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci.
+                    Etiam at risus et justo dignissim congue. Donec congue lacinia
+                    dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper
+                    orci. Quisque eget odio ac lectus vestibulum faucibus eget in
+                    metus. In pellentesque faucibus vestibulum. Nulla at nulla justo,
+                    eget luctus.</p>
+                <div class="panel">
+                    <ul class="">
+                        <li><a href="#">Autor: José Pérez</a></li>
+                        <li><a href="#">Comentarios: 3</a></li>
+                    </ul>
+                </div>
+            </article>
+            <article class="blog-post">
+                <h3>Un excelente título de publicación <small>18/10/2021</small></h3>
+                <img class="img-thumbnail" src="https://via.placeholder.com/850x350">
+                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci.
+                    Etiam at risus et justo dignissim congue. Donec congue lacinia
+                    dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper
+                    orci. Quisque eget odio ac lectus vestibulum faucibus eget in
+                    metus. In pellentesque faucibus vestibulum. Nulla at nulla justo,
+                    eget luctus.</p>
+                <div class="panel">
+                    <ul class="">
+                        <li><a href="#">Autor: José Pérez</a></li>
+                        <li><a href="#">Comentarios: 3</a></li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+        <div class="col-sm-3">
+            <div class="position-sticky fixed-top">
+                <h4>Categorías</h4>
+                <ul>
+                    <li><a href="#">PHP</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#">C#</a></li>
+                    <li><a href="#">Java</a></li>
+                </ul>
+                <h4>Autores</h4>
+                <ul>
+                    <li><a href="#">Sandra</a></li>
+                    <li><a href="#">Jessica</a></li>
+                    <li><a href="#">José</a></li>
+                    <li><a href="#">Andrés</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
 </html>
