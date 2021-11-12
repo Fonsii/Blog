@@ -1,9 +1,9 @@
 from .MainScreen import MainScreen
 from .CreatePost import CreatePost
-from .SeePost import SeePost
+from .ViewPost import ViewPost
 
 __all__ = [
     MainScreen,
     CreatePost,
-    SeePost,
+    ViewPost,
 ]
