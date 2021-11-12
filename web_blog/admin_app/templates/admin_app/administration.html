@@ -1,10 +1,16 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
-    {% include  "head.html" %}
-
-    <body>
-        {% include  "navbar_template.html" %}
-    </body>
-</html>
+{% extends "base.html" %}
+{% block page_title %}Web Blog - Admin{% endblock %}
+{% block navbar_options %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'administration_categories' %}">Categorías</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Autores</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Publicaciones</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Comentarios</a>
+    </li>
+{% endblock %}
