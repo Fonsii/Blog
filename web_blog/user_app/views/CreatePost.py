@@ -36,11 +36,11 @@ class CreatePost(generic.View):
                     file = request.FILES['imagePost']
                     post_constructor.image = file
 
-                #post_constructor.save()
+                post_constructor.save()
 
-                messages.add_message(request, messages.INFO, 'Se creo la publicación correctamente.')
+                messages.add_message(request, messages.INFO, 'Se creo la publicación correctamente')
                 return HttpResponseRedirect(self.request.path_info) 
             except Exception as e:
                 print(e)
-                messages.add_message(request, messages.ERROR, 'Hubo un error al crear la publicación, intentelo más tarde.')
+                messages.add_message(request, messages.ERROR, 'Hubo un error al crear la publicación, intentelo más tarde')
                 return HttpResponseRedirect(self.request.path_info) 
