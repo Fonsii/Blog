@@ -21,12 +21,9 @@
                         </div>
                     {% else %}
                         {% for post in posts %}
-                            <article class="blog-post">
-                                       
+                            <article class="blog-post">  
                                 <h3 class="font-weight-bold">{{post.title}}   <small class="font-weight-normal">{{post.created_date}}</small></h3>
-
                                 <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-thumbnail" style="width: 850px; height: 350px;">
-
                                 <p class="font-weight-light">
                                     {% if post.text|length > 300 %}
                                         {{ post.text|truncatechars:301 }}... 
@@ -37,10 +34,9 @@
                                         {{ post.text }}
                                     {% endif %}
                                 </p>
-
                                 <div class="panel">
                                     <ul class="">
-                                        <li><a href="#">Autor: {{post.author.first_name}} {{post.author.last_name}}</a></li>
+                                        <li><a href="index?author_email={{ post.author.email }}">Autor: {{post.author.first_name}} {{post.author.last_name}}</a></li>
                                         <li><a href="#">Comentarios: {{post.num_comments}}</a></li>
                                     </ul>
                                 </div>
@@ -117,10 +113,9 @@
                         </ul>
                         <h4>Autores</h4>
                         <ul>
-                            <li><a href="#">Sandra</a></li>
-                            <li><a href="#">Jessica</a></li>
-                            <li><a href="#">José</a></li>
-                            <li><a href="#">Andrés</a></li>
+                            {% for author in authors %}
+                                <li><a href="index?author_email={{ author.email }}">{{ author.first_name }} {{ author.last_name }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
