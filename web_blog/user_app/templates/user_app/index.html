@@ -15,7 +15,7 @@
         <section class="container">
             <div class="row">
                 <div class="col-sm-9">
-                    {% if not posts%}
+                    {% if not posts %}
                         <div class="alert alert-danger" role="alert">
                             No se encontro ninguna publicación.
                         </div>
@@ -27,7 +27,7 @@
                                 <p class="font-weight-light">
                                     {% if post.text|length > 300 %}
                                         {{ post.text|truncatechars:301 }}... 
-                                        <a href="{% url 'see_post' post_title=post.title %}">
+                                        <a href="{% url 'view_post' post=post.id %}">
                                             Ver más
                                         </a>
                                     {% else %}
@@ -37,7 +37,7 @@
                                 <div class="panel">
                                     <ul class="">
                                         <li><a href="index?author_email={{ post.author.email }}">Autor: {{post.author.first_name}} {{post.author.last_name}}</a></li>
-                                        <li><a href="#">Comentarios: {{post.num_comments}}</a></li>
+                                        <li><a href="{% url 'view_post' post=post.id %}">Comentarios: {{post.num_comments}}</a></li>
                                     </ul>
                                 </div>
                             </article>

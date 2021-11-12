@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                <article class="blog-post">
+                    <h2 class="font-weight-bold">{{ post.title }} <small
+                            class="font-weight-normal">{{ post.created_date }}</small></h2>
+                    <h3>
+                        Publicado por: {{ post.author.first_name }} {{ post.author.last_name }}
+                    </h3>
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-thumbnail"
+                         style="width: 850px; height: 350px;">
+                    <p class="font-weight-light">
+                        {{ post.text }}
+                    </p>
+                </article>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input name="email" class="form-control mb-3" type="email" placeholder="Ingresa tu correo">
+                        {{ form.as_p }}
+                    </div>
+                    <input class="btn btn-primary mt-3" type="submit" value="Comentar">
+                </form>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <h3>Comentarios.</h3>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md">
+                {% for comment in comments %}
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            {{ comment.author.first_name }} {{ comment.author.last_name }} comentó a las
+                            {{ comment.created_date }}
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ comment.text }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row mt-5"></div>
+    </div>
+{% endblock %}

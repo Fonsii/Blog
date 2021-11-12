@@ -1,9 +1,9 @@
 from django.db import models
 from django.utils import timezone
-
 from admin_app.models import Category
-# Create your models here.
 
+
+# Create your models here.
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
