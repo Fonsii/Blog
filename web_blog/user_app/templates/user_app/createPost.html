@@ -6,40 +6,66 @@
     <body>
         {% include  "navbar_template.html" %}
         <br>
-        <div class="container">
-            <div class="panel">
-                <div class="text-center">
-                    <h1>Crear publicación</h1>
+        {% if messages %}
+            <div class="container">
+                {% for message in messages %}
+                    {% if message.tags %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ message }}
+                            </div>
+                        {% else %}
+                            <div class="alert alert-success" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                <div class="input-group mb-3">
+                    <a href="{% url 'index' %}" class="btn btn-primary ml-auto"> Volver al inicio </a>
                 </div>
             </div>
-
-            <form action= "{% url 'create_post'%}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="input-group mb-3">
-                    <input name= "titlePost" id="titlePost" type="text" class="form-control" placeholder="Titulo de la publicación" aria-label="Titulo" maxlength="25" required>
-                </div>
-
-                <div class="input-group mb-3">
-                    <textarea name="contentPost" id="contentPost" class="form-control" rows="10" placeholder="Contenido de la publicación" aria-label="Contenido" required></textarea>
-                </div>
-                
-                <a style="text-decoration: none; color: #000000;" onclick="popFileSelector()">   
-                    <div class="card">
-                        <div class="card-body">
-                            <input name="imagePost" type="file" id="fileSelector" accept="image/png" hidden/>
-                            <span class = "placeholder">Seleccione una imagen para la publicación (formato png)</span>
-                        </div>
+        {% else %}
+            <div class="container">
+                <div class="panel">
+                    <div class="text-center">
+                        <h1>Crear publicación</h1>
                     </div>
-                </a>
-                <br>
-                <div class="input-group mb-3 float-right">
-                    <a type="button" class="btn btn-secondary mr-2 float-right" href="{% url 'index' %}">Cancelar</a>
-                    <button type="submit" class="btn btn-primary">Crear publicación</button>
                 </div>
-                
-            </form>
 
-        </div>
+                <form action= "{% url 'create_post'%}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <input name= "titlePost" id="titlePost" type="text" class="form-control" placeholder="Titulo de la publicación" aria-label="Titulo" maxlength="25" required>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <textarea name="contentPost" id="contentPost" class="form-control" rows="10" placeholder="Contenido de la publicación" aria-label="Contenido" required></textarea>
+                    </div>
+                    
+                    <label for="categorySelector"> Categoría </label>
+                    <select id="categorySelector" name="categoryPost" class="form-select" aria-label="Categoría" required>
+                        {% for category in categories %}
+                            <option value="{{category.id}}" title="{{category.description}}">{{category.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <a style="text-decoration: none; color: #000000;" onclick="popFileSelector()">   
+                        <div class="card">
+                            <div class="card-body">
+                                <input name="imagePost" type="file" id="fileSelector" accept="image/png" hidden/>
+                                <span class = "placeholder">Seleccione una imagen para la publicación (formato png)</span>
+                            </div>
+                        </div>
+                    </a>
+                    <br>
+                    <div class="input-group mb-3">
+                        <a type="button" class="btn btn-secondary mr-2 ml-auto" href="{% url 'index' %}">Cancelar</a>
+                        <button type="submit" class="btn btn-primary ">Crear publicación</button>
+                    </div>                    
+                </form>
+            </div>
+        {% endif %}
     </body>
 
     <script>
