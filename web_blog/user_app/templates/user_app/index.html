@@ -1,117 +1,130 @@
-{% load socialaccount %}
-
+<!DOCTYPE html>
 <html>
-{% include  "head.html" %}
-<body>
-{% include  "navbar_template.html" %}
-<div class="panel">
-    <div class="text-center">
-        <h1>Diario web</h1>
-    </div>
-</div>
-<section class="container">
-    <div class="row">
-        <div class="col-sm-9">
-            <article class="blog-post">
-                <h3>Un excelente título de publicación <small>18/10/2021</small></h3>
-                <img class="img-thumbnail" src="https://via.placeholder.com/850x350">
-                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci.
-                    Etiam at risus et justo dignissim congue. Donec congue lacinia
-                    dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper
-                    orci. Quisque eget odio ac lectus vestibulum faucibus eget in
-                    metus. In pellentesque faucibus vestibulum. Nulla at nulla justo,
-                    eget luctus.</p>
-                <div class="panel">
-                    <ul class="">
-                        <li><a href="#">Autor: José Pérez</a></li>
-                        <li><a href="#">Comentarios: 3</a></li>
-                    </ul>
-                </div>
-            </article>
-            <article class="blog-post">
-                <h3>Un excelente título de publicación <small>18/10/2021</small></h3>
-                <img class="img-thumbnail" src="https://via.placeholder.com/850x350">
-                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci.
-                    Etiam at risus et justo dignissim congue. Donec congue lacinia
-                    dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper
-                    orci. Quisque eget odio ac lectus vestibulum faucibus eget in
-                    metus. In pellentesque faucibus vestibulum. Nulla at nulla justo,
-                    eget luctus.</p>
-                <div class="panel">
-                    <ul class="">
-                        <li><a href="#">Autor: José Pérez</a></li>
-                        <li><a href="#">Comentarios: 3</a></li>
-                    </ul>
-                </div>
-            </article>
-            <article class="blog-post">
-                <h3>Un excelente título de publicación <small>18/10/2021</small></h3>
-                <img class="img-thumbnail" src="https://via.placeholder.com/850x350">
-                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci.
-                    Etiam at risus et justo dignissim congue. Donec congue lacinia
-                    dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper
-                    orci. Quisque eget odio ac lectus vestibulum faucibus eget in
-                    metus. In pellentesque faucibus vestibulum. Nulla at nulla justo,
-                    eget luctus.</p>
-                <div class="panel">
-                    <ul class="">
-                        <li><a href="#">Autor: José Pérez</a></li>
-                        <li><a href="#">Comentarios: 3</a></li>
-                    </ul>
-                </div>
-            </article>
-            <article class="blog-post">
-                <h3>Un excelente título de publicación <small>18/10/2021</small></h3>
-                <img class="img-thumbnail" src="https://via.placeholder.com/850x350">
-                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci.
-                    Etiam at risus et justo dignissim congue. Donec congue lacinia
-                    dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper
-                    orci. Quisque eget odio ac lectus vestibulum faucibus eget in
-                    metus. In pellentesque faucibus vestibulum. Nulla at nulla justo,
-                    eget luctus.</p>
-                <div class="panel">
-                    <ul class="">
-                        <li><a href="#">Autor: José Pérez</a></li>
-                        <li><a href="#">Comentarios: 3</a></li>
-                    </ul>
-                </div>
-            </article>
-            <article class="blog-post">
-                <h3>Un excelente título de publicación <small>18/10/2021</small></h3>
-                <img class="img-thumbnail" src="https://via.placeholder.com/850x350">
-                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci.
-                    Etiam at risus et justo dignissim congue. Donec congue lacinia
-                    dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper
-                    orci. Quisque eget odio ac lectus vestibulum faucibus eget in
-                    metus. In pellentesque faucibus vestibulum. Nulla at nulla justo,
-                    eget luctus.</p>
-                <div class="panel">
-                    <ul class="">
-                        <li><a href="#">Autor: José Pérez</a></li>
-                        <li><a href="#">Comentarios: 3</a></li>
-                    </ul>
-                </div>
-            </article>
-        </div>
-        <div class="col-sm-3">
-            <div class="position-sticky fixed-top">
-                <h4>Categorías</h4>
-                <ul>
-                    <li><a href="#">PHP</a></li>
-                    <li><a href="#">JavaScript</a></li>
-                    <li><a href="#">C#</a></li>
-                    <li><a href="#">Java</a></li>
-                </ul>
-                <h4>Autores</h4>
-                <ul>
-                    <li><a href="#">Sandra</a></li>
-                    <li><a href="#">Jessica</a></li>
-                    <li><a href="#">José</a></li>
-                    <li><a href="#">Andrés</a></li>
-                </ul>
+    {% include  "head.html" %}
+
+    <body>
+
+        {% include  "navbar_template.html" %}
+        <br>
+        <div class="panel">
+            <div class="text-center">
+                <h1>Diario web</h1>
             </div>
         </div>
-    </div>
-</section>
-</body>
+        
+        <section class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    {% if not posts%}
+                        <div class="alert alert-danger" role="alert">
+                            No se encontro ninguna publicación.
+                        </div>
+                    {% else %}
+                        {% for post in posts %}
+                            <article class="blog-post">
+                                       
+                                <h3 class="font-weight-bold">{{post.title}}   <small class="font-weight-normal">{{post.created_date}}</small></h3>
+
+                                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-thumbnail" style="width: 850px; height: 350px;">
+
+                                <p class="font-weight-light">
+                                    {% if post.text|length > 300 %}
+                                        {{ post.text|truncatechars:301 }}... 
+                                        <a href="{% url 'see_post' post_title=post.title %}">
+                                            Ver más
+                                        </a>
+                                    {% else %}
+                                        {{ post.text }}
+                                    {% endif %}
+                                </p>
+
+                                <div class="panel">
+                                    <ul class="">
+                                        <li><a href="#">Autor: {{post.author.first_name}} {{post.author.last_name}}</a></li>
+                                        <li><a href="#">Comentarios: {{post.num_comments}}</a></li>
+                                    </ul>
+                                </div>
+                            </article>
+                        {% endfor %}
+
+
+                        {% if posts.has_other_pages %}
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    {% if posts.has_previous %}
+                                        <li class="page-item" id="arrow-left">
+                                            <a class="page-link" href="blog?pagina={{ posts.previous_page_number }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                                    <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled" id="arrow-left">
+                                            <a class="page-link">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                                    <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% for page in posts.paginator.page_range %}
+                                        {% if posts.number == page %}
+                                            <li class="page-item active"><a class="page-link">{{ page }}</a></li>
+                                        {% else %}
+                                            <li class="page-item"><a class="page-link" href="blog?pagina={{page}}">{{ page }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if posts.has_next %}
+                                        <li class="page-item" id="arrow-right">
+                                            <a class="page-link" href="blog?pagina={{ posts.next_page_number }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled" id="arrow-right">
+                                            <a class="page-link">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="col-sm-3">
+                    <div class="position-sticky fixed-top">
+                        <a class="btn btn-light" href="{% url 'create_post' %}" role="button">Agregar publicación</a>
+                        <br>
+                        <br>
+                        <h4>Categorías</h4>
+                        <ul>
+                            <li><a href="#">PHP</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                            <li><a href="#">C#</a></li>
+                            <li><a href="#">Java</a></li>
+                        </ul>
+                        <h4>Autores</h4>
+                        <ul>
+                            <li><a href="#">Sandra</a></li>
+                            <li><a href="#">Jessica</a></li>
+                            <li><a href="#">José</a></li>
+                            <li><a href="#">Andrés</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
 </html>
