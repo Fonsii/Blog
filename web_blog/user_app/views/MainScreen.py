@@ -5,6 +5,7 @@ from django.conf import settings
 
 from user_app.models import Post
 from django.contrib.auth.models import User
+from admin_app.models import Category
 
 def get_paginator_results(results, page_number):
     if results is not None:
@@ -17,10 +18,11 @@ def get_paginator_results(results, page_number):
     return results
 
 def get_results_filter_author(email):
-    return Post.objects.filter(author__email=email)
+    return Post.objects.filter(author__email=email).order_by("-created_date")
 
 def get_results_filter_category(category):
-    pass
+    print(category)
+    return Post.objects.filter(category__id=category).order_by("-created_date")
 
 def get_all_results():
     return Post.objects.all().order_by("-created_date")
@@ -30,6 +32,9 @@ def get_all_authors():
     authors = User.objects.filter(id__in=authors_id_list)
     return authors
 
+def get_all_categories():
+    return Category.objects.all()
+   
 def do_filter(filter_post):
     posts = None
 
@@ -38,7 +43,7 @@ def do_filter(filter_post):
     if filter_selector == "author":
         posts = get_results_filter_author(filter_post[filter_selector])
     elif filter_selector == "category":
-        print("category not done")
+        posts = get_results_filter_category(filter_post[filter_selector])
     
     return posts
     
@@ -53,10 +58,11 @@ def create_context(page_number, filter_post):
     page_display = get_paginator_results(posts, page_number)
     
     authors = get_all_authors()
-
+    categories = get_all_categories()
     context ={
         'posts': page_display,
         'authors' : authors,
+        'categories' : categories,
     }
     
     return context
